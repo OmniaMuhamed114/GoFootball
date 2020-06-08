@@ -15,7 +15,7 @@ public class Invitation {
      * Creates reservation booked player, reserved playground, playground owner, price for reservation, and time of reservation.
      * @param invitationSender This is player who send the invitation to another player.
      * @param invitationReceiver This is player who was sent the invitation.
-     * @param type This is type of invitation if it play invitation or join team invitation.
+     * @param type This is type of invitation if it is play invitation or join team invitation.
      * @param message This is the message which wrote in the invitation.
      */
     public Invitation(User invitationSender, User invitationReceiver, String type, String message){

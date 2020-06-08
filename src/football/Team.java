@@ -3,7 +3,7 @@ package football;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * The Team class implements an application that creates team for player, and modify it.
+ * The Team class implements an application that creates team for the player, and modify it.
  */
 public class Team {
     User teamLeader;
