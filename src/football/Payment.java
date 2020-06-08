@@ -9,9 +9,9 @@ public class Payment {
     /**
      * This is parameterize constructor for this class to set payer, payee, and amount.
      * Creates a payment with its payer, payee, and amount.
-     * @param payer This is the first parameter of parameterize constructor.
-     * @param payee This is the second parameter of parameterize constructor.
-     * @param amount This is the third parameter of parameterize constructor.
+     * @param payer This is the first parameter of parameterize constructor it is the payer of payment.
+     * @param payee This is the second parameter of parameterize constructor it is the payee of payment.
+     * @param amount This is the third parameter of parameterize constructor it is amount which will be payed to playground owner.
      */
     Payment(User payer, User payee, double amount){
         this.payer = payer;
@@ -27,14 +27,14 @@ public class Payment {
     }
     /**
      * This method sets the payer of payment.
-     * @param payer to set it in payer.
+     * @param payer to set the payer.
      */
     public void setPayer(User payer) {
         this.payer = payer;
     }
     /**
      * This method sets the payee of payment.
-     * @param payee to set it in payee.
+     * @param payee to set the payee.
      */
     public void setPayee(User payee) {
         this.payee = payee;

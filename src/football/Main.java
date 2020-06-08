@@ -23,11 +23,11 @@ public class Main {
     public static void main(String [] args) {
         User admin = new User("Rawda Ahmed", "RawdaAhmed", "rawdaahmed165@gmail.com", "Rawda11$", "administrator");
         users.add(admin);
-        User player1 = new User("Salma Ahmed", "SalmaAhmed", "salma.smsm.samasemo@gmail.com", "Salma@114", 70,"player");
+        /*User player1 = new User("Salma Ahmed", "SalmaAhmed", "salma.smsm.samasemo@gmail.com", "Salma@114", 70,"player");
         users.add(player1);
-        User player2 = new User("Omnia Mohamed", "OmniaMohamed", "omniamuhamed114@gmail.com", "omnia$11", 100,"player");
+        User player2 = new User("Omnia Mohamed", "OmniaMohamed", "omniamuhamed114@gmail.com", "Omnia@114", 100,"player");
         users.add(player2);
-        User owner = new User("Malak Rizk", "MalakRizk", "malkrizk@gmail.com", "Malak&22",40, "playground owner");
+        User owner = new User("Malak Rizk", "MalakRizk", "malkrizk@gmail.com", "Malak@114",40, "playground owner");
         users.add(owner);
         List<String> availableHours = new ArrayList<>();
         availableHours.add("4:00");
@@ -35,7 +35,7 @@ public class Main {
         availableHours.add("8:00");
         owner.addPlayground("Malak's playground", "Malak Rizk", "MalakRizk", "12 Ahmed Barakat st Fesal Giza Egypt", "This is a big playground, it is in a good location", availableHours, 20, 40, 30);
         owner.getPlaygrounds().get(0).setId("31112");
-        admin.approvePlayground("MalakRizk", "31112");
+        admin.approvePlayground("MalakRizk", "31112");*/
         mainScreen();
     }
     /**
