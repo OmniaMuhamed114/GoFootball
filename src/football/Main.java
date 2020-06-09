@@ -1060,7 +1060,7 @@ public class Main {
         for(Invitation invitation : invitations){
             if(invitation.getId().equals(id) && invitation.getType().equals("play")){
                 String message = "Hi " + invitation.getInvitationSender().getName() + "," + '\n' + invitation.getInvitationReceiver().getName() + " accepts your invitation.";
-                //sendMail(invitation.getInvitationSender().getEmail(), message);
+                sendMail(invitation.getInvitationSender().getEmail(), message);
                 invitations.remove(invitation);
                 System.out.println("Invitation accepted.");
                 return;
@@ -1208,7 +1208,6 @@ public class Main {
             message.setText(invitationMessage);
             System.out.println("sending...");
             Transport.send(message);
-            //System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
