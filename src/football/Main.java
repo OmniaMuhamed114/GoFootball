@@ -21,21 +21,16 @@ public class Main {
      * @param args command-line arguments.
      */
     public static void main(String [] args) {
-        User admin = new User("Rawda Ahmed", "RawdaAhmed", "rawdaahmed165@gmail.com", "Rawda11$", "administrator");
-        users.add(admin);
-        /*User player1 = new User("Salma Ahmed", "SalmaAhmed", "salma.smsm.samasemo@gmail.com", "Salma@114", 70,"player");
+        User admin1 = new User("Rawda Ahmed", "RawdaAhmed", "rawdaahmed165@gmail.com", "Rawda@114", "administrator");
+        users.add(admin1);
+        User admin2 = new User("Sara Atef", "SaraAtef", "saramazhar286@gmail.com", "Sara@114", "administrator");
+        users.add(admin2);
+        User player1 = new User("Omnia Mohamed", "OmniaMohamed", "omniamuhamed114@gmail.com", "Omnia@114", 50,"player");
         users.add(player1);
-        User player2 = new User("Omnia Mohamed", "OmniaMohamed", "omniamuhamed114@gmail.com", "Omnia@114", 100,"player");
+        User player2 = new User("Salma Ahmed", "SalmaAhmed", "salma.smsm.samasemo@gmail.com", "Salma@114", 50,"player");
         users.add(player2);
-        User owner = new User("Malak Rizk", "MalakRizk", "malkrizk@gmail.com", "Malak@114",40, "playground owner");
+        User owner = new User("Malak Rizk", "MalakRizk", "malkrizk@gmail.com", "Malak@114",50, "playground owner");
         users.add(owner);
-        List<String> availableHours = new ArrayList<>();
-        availableHours.add("4:00");
-        availableHours.add("5:00");
-        availableHours.add("8:00");
-        owner.addPlayground("Malak's playground", "Malak Rizk", "MalakRizk", "12 Ahmed Barakat st Fesal Giza Egypt", "This is a big playground, it is in a good location", availableHours, 20, 40, 30);
-        owner.getPlaygrounds().get(0).setId("31112");
-        admin.approvePlayground("MalakRizk", "31112");*/
         mainScreen();
     }
     /**
@@ -399,8 +394,9 @@ public class Main {
         if(!valid){
             System.out.println("Playground not found, please try again.");
             approvePlayground();
+        }else{
+            System.out.println("Playground approved.");
         }
-        System.out.println("Playground approved.");
     }
     /**
      * This method allows administrator to suspend a playground after receiving any complaint.
@@ -417,8 +413,9 @@ public class Main {
         if(!valid){
             System.out.println("Playground not found, please try again.");
             suspendPlayground();
+        }else{
+            System.out.println("Playground suspended.");
         }
-        System.out.println("Playground suspended.");
     }
     /**
      * This method allows administrator to activate a playground if he knows that the complaint will not be repeated.
@@ -435,8 +432,9 @@ public class Main {
         if(!valid){
             System.out.println("Playground not found, please try again.");
             activatePlayground();
+        }else{
+            System.out.println("Playground activated.");
         }
-        System.out.println("Playground activated.");
     }
     /**
      * This method allows administrator to delete a playground from system.
@@ -453,8 +451,9 @@ public class Main {
         if(!valid){
             System.out.println("Playground not found, please try again.");
             removePlayground();
+        }else{
+            System.out.println("Playground removed.");
         }
-        System.out.println("Playground removed.");
     }
     /**
      * This method shows the menu of the information which the playground owner can edit it.
@@ -1068,6 +1067,8 @@ public class Main {
                 for(Team team : teams){
                     if(invitation.getInvitationSender() == team.teamLeader){
                         System.out.println("Invitation accepted, you were added to the team.");
+                        String message = "Hi " + invitation.getInvitationSender().getName() + "," + '\n' + invitation.getInvitationReceiver().getName() + " accepts your invitation.";
+                        sendMail(invitation.getInvitationSender().getEmail(), message);
                         team.addPlayer(user);
                         invitations.remove(invitation);
                         return;

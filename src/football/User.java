@@ -138,7 +138,7 @@ public class User {
     public String getRoll() { return roll; }
     /**
      * This method gets the playgrounds of a playground owner.
-     * @return List<Playground> This is the playgrounds of a playground owner.
+     * @return List of playgrounds This is the playgrounds of a playground owner.
      */
     public List<Playground> getPlaygrounds() {
         return playgrounds;
@@ -330,7 +330,7 @@ public class User {
     }
     /**
      * This method allows the player to see available playgrounds without filter them.
-     * @return List<Playground> These are all available playgrounds.
+     * @return List of playgrounds These are all available playgrounds.
      */
     public List<Playground> getAvailablePlaygrounds(){
         List<Playground> availablePlaygrounds = new ArrayList<>();
@@ -344,7 +344,8 @@ public class User {
     }
     /**
      * This method allows the player to see available playgrounds in specific area.
-     * @return List<Playground> These are all available playgrounds in specific area.
+     * @param area This is the area which the player searches about playground in it.
+     * @return List of playgrounds These are all available playgrounds in specific area.
      */
     public List<Playground> filterLocation(String area){
         List<Playground> availablePlaygrounds = new ArrayList<>();
@@ -359,7 +360,8 @@ public class User {
     }
     /**
      * This method allows the player to see available playgrounds in specific hour.
-     * @return List<Playground> These are all available playgrounds in specific hour.
+     * @param hour This is the hour which the player searches about.
+     * @return List of playgrounds These are all available playgrounds in specific hour.
      */
     public List<Playground> filterHours(String hour){
         List<Playground> availablePlaygrounds = new ArrayList<>();
@@ -374,7 +376,8 @@ public class User {
     }
     /**
      * This method allows the player to see available playgrounds with specific range of price.
-     * @return List<Playground> These are all available playgrounds in specific range of price.
+     * @param price This is the max price which player want to pay for playground.
+     * @return List of playgrounds These are all available playgrounds in specific range of price.
      */
     public List<Playground> filterPlaygroundPrice(double price){
         List<Playground> availablePlaygrounds = new ArrayList<>();
@@ -389,13 +392,16 @@ public class User {
     }
     /**
      * This method allows the player to see available playgrounds in specific area, in specific hour, and with specific range of price.
-     * @return List<Playground> These are all available playgrounds in specific area, in specific hour, and in specific range of price.
+     * @param area This is the area which the player searches about playground in it.
+     * @param hour This is the hour which the player searches about.
+     * @param price This is the max price which player want to pay for playground.
+     * @return List of playgrounds These are all available playgrounds in specific area, in specific hour, and in specific range of price.
      */
     public List<Playground> filterAll(String area, String hour, double price){
         List<Playground> availablePlaygrounds = new ArrayList<>();
         for(User user : Main.users){
             for(Playground playground : user.playgrounds){
-                if(playground.getLocation().toLowerCase().contains(area.toLowerCase())
+                if(Boolean.TRUE.equals(playground.isAvailable()) && playground.getLocation().toLowerCase().contains(area.toLowerCase())
                         && playground.getAvailableHours().contains(hour)
                         && playground.getPricePerHour() <= price && price > 0)
                     availablePlaygrounds.add(playground);
@@ -414,9 +420,9 @@ public class User {
         Reservation reservation = null;
         for(User user : Main.users){
             for(Playground playground : user.playgrounds){
-                for(int i = 0; i < playground.getAvailableHours().size(); i++){
+                for(String hour : playground.getAvailableHours()){
                     if(playgroundID.equals(playground.getId())
-                            && playground.getAvailableHours().get(i).equals(bookingHour)
+                            && hour.equals(bookingHour)
                             && Boolean.TRUE.equals(playground.isAvailable())
                             && this.getEWallet() >= playground.getPricePerHour()
                             && this.password.equals(password)){
@@ -424,7 +430,7 @@ public class User {
                         reservation.getPayment().withdraw();
                         this.reservations.add(reservation);
                         playground.addReservation(reservation);
-                        playground.getAvailableHours().remove(playground.getAvailableHours().get(i));
+                        playground.getAvailableHours().remove(hour);
                         if(playground.getAvailableHours().isEmpty())
                             playground.setAvailable(false);
                         System.out.println("booked successfully.");
@@ -511,7 +517,7 @@ public class User {
     }
     /**
      * This method allows the player to see his reservations which wouldn't be done or cancel yet.
-     * @return List<Reservation> These are all new reservations of the player which wouldn't be done or cancel yet.
+     * @return List of reservations These are all new reservations of the player which wouldn't be done or cancel yet.
      */
     public List<Reservation> getAllReservations(){
         if(this.reservations.isEmpty()){
@@ -547,7 +553,7 @@ public class User {
     }
     /**
      * This method allows the player to send invitation to his team to play with him.
-     * @return List<Invitation> these are the invitations which were sent.
+     * @return List of invitations these are the invitations which were sent.
      */
     public List<Invitation> sendPlayInvitationToTeam() {
         List<Invitation> invitations = new ArrayList<>();
