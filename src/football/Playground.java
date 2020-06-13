@@ -144,14 +144,14 @@ public class Playground {
     }
     /**
      *This method gets the available hours of playground.
-     * @return List<String> These are available hours of playground.
+     * @return List of strings these are available hours of playground.
      */
     public List<String> getAvailableHours() {
         return availableHours;
     }
     /**
      *This method gets the reservations of playground.
-     * @return List<Reservation> These are reservations of playground.
+     * @return List of reservations These are reservations of playground.
      */
     public List<Reservation> getReservations() {
         return reservations;

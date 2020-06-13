@@ -25,7 +25,7 @@ public class Team {
     }
     /**
      * This method gets players of team.
-     * @return List<User> This returns team players.
+     * @return List of users This returns team players.
      */
     public List<User> getPlayers() {
         return players;
